@@ -6,16 +6,18 @@ import { useNavigate} from 'react-router-dom';
 
 import './SideNavBar.scss';
 
-import rmlogo from '/DM.svg';
-import rmActivelogo from '/DM-hover.svg';
-import report from '/CC.svg';
-import reportActive from '/CC-hover.svg';
-import resiliencelogo from '/RM.svg';
-import resActiveLogo from '/RM-hover.svg';
+import ccLogo from '/CC.svg';
+import ccActiveLogo from '/CC-hover.svg';
+import dmLogo from '/DM.svg';
+import dmActiveLogo from '/DM-hover.svg';
+import rmLogo from '/RM.svg';
+import rmActiveLogo from '/RM-hover.svg';
 import gauriLogo from '/Gauri.svg';
 import gauriActiveLogo from '/Gauri-hover.svg';
 import dtLogo from '/DT.svg';
 import dtActiveLogo from '/DT-hover.svg';
+import sweLogo from '/SWE.svg';
+import sweActiveLogo from '/SWE-hover.svg';
 
 
 
@@ -24,7 +26,7 @@ import dtActiveLogo from '/DT-hover.svg';
 const SideNavBar = () => {
   const navigate = useNavigate();
   //const dispatch = useDispatch();
-  const [selectedNav, setSelectedNav] = useState('riskai');
+  const [selectedNav, setSelectedNav] = useState('worldengine');
   const [showReports, setShowReports] = useState(false);
   const [showRiskAi, setShowRiskAi] = useState(false);
   const [showResilience, setShowResilience] = useState(false);
@@ -160,14 +162,14 @@ const SideNavBar = () => {
       <button onClick={openGAURI}>
         GAURI
       </button> */}
-        <button 
+        <button
           className={'sidenav-logo'}
           // onClick={openCC}
           onClick={() => onClickSideNav('/reports','reports')}
           onMouseEnter={() => setShowReports(true)}
           onMouseLeave={() => setShowReports(false)}
         >
-          <img src={selectedNav === 'reports' ? reportActive : report} alt='Reports'/>
+          <img src={selectedNav === 'reports' ? ccActiveLogo : ccLogo} alt='Command Center'/>
           {/* <label className='tab-heading' >REPORTS</label> */}
         </button>
         {showReports && <div 
@@ -185,14 +187,14 @@ const SideNavBar = () => {
             Command Center
           </span>
         </div>}
-        <button 
+        <button
           className={'sidenav-logo'}
           // onClick={openRM}
           onClick={() => onClickSideNav('/riskai','riskai')}
           onMouseEnter={() => setShowRiskAi(true)}
           onMouseLeave={() => setShowRiskAi(false)}
         >
-          <img src={selectedNav === 'riskai' ? rmActivelogo : rmlogo} alt='Risk Management'/>
+          <img src={selectedNav === 'riskai' ? dmActiveLogo : dmLogo} alt='Disruption Management'/>
           {/* <label className='tab-heading' >RISK MANAGEMENT</label> */}
         </button>
         {showRiskAi && <div 
@@ -210,7 +212,7 @@ const SideNavBar = () => {
             Disruption Management
           </span>
         </div>}
-        <button 
+        <button
           //className={'sidenav-logo'}
           className='res-logo'
           // onClick={openResilience}
@@ -218,7 +220,7 @@ const SideNavBar = () => {
           onMouseEnter={() => setShowResilience(true)}
           onMouseLeave={() => setShowResilience(false)}
         >
-          <img src={selectedNav === 'resilience' ? resActiveLogo : resiliencelogo} alt='Resilience Monitoring'/>
+          <img src={selectedNav === 'resilience' ? rmActiveLogo : rmLogo} alt='Resilience Monitoring'/>
           {/* <img src={Resiliencelogo} alt='Resilience'/> */}
         </button>
         {showResilience && <div 
@@ -285,13 +287,13 @@ const SideNavBar = () => {
             Digital Twin
           </span>
         </div>}
-        <button 
-          className={selectedNav === 'worldengine' ? 'hover-swe-content-active' : 'hover-swe-content'}
+        <button
+          className={'sidenav-logo'}
           onMouseEnter={() => setShowSwe(true)}
           onMouseLeave={() => setShowSwe(false)}
           onClick={() => onClickSideNav('/worldengine', 'worldengine')}
         >
-            SWE
+          <img src={selectedNav === 'worldengine' ? sweActiveLogo : sweLogo} alt='Simulation World Engine'/>
         </button>
         {showSwe && <div
           className='hover-swe'
