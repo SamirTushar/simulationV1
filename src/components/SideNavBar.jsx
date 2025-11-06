@@ -6,16 +6,16 @@ import { useNavigate} from 'react-router-dom';
 
 import './SideNavBar.scss';
 
-import rmlogo from '../../assets/RMicon.svg';
-import rmActivelogo from '../../assets/riskAIBoldIcon.svg';
-import report from '../../assets/reports.svg';
-import reportActive from '../../assets/ccboldicon.svg';
-import resiliencelogo from '../../assets/Resilienceicon.svg';
-import resActiveLogo from '../../assets/resActiveLogo.svg';
-import gauriLogo from '../../assets/Gauri-icon.svg';
-import gauriActiveLogo from '../../assets/Gauri-activeicon.svg';
-import dtLogo from '../../assets/DTicon.svg';
-import dtActiveLogo from '../../assets/DTicon-active.svg';
+import rmlogo from '/DM.svg';
+import rmActivelogo from '/DM-hover.svg';
+import report from '/CC.svg';
+import reportActive from '/CC-hover.svg';
+import resiliencelogo from '/RM.svg';
+import resActiveLogo from '/RM-hover.svg';
+import gauriLogo from '/Gauri.svg';
+import gauriActiveLogo from '/Gauri-hover.svg';
+import dtLogo from '/DT.svg';
+import dtActiveLogo from '/DT-hover.svg';
 
 
 
