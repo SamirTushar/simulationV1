@@ -174,5 +174,32 @@
       {"orderId": "ORD-2025-04556", "customerName": "NHS Supply Chain", "sku": "MED-INSULIN-GLARGINE", "quantity": 5000, "orderValue": 1250000, "originalDeliveryDate": "2025-06-01", "newDeliveryDate": "2025-06-12", "delayDays": 11, "status": "Critical"},
       {"orderId": "ORD-2025-04623", "customerName": "Boots Pharmacies", "sku": "MED-ANTIBIOTICS-AMOX", "quantity": 15000, "orderValue": 450000, "originalDeliveryDate": "2025-06-03", "newDeliveryDate": "2025-06-14", "delayDays": 11, "status": "Critical"}
     ]
+  },
+  {
+    "id": "sim-pharma-001",
+    "name": "Vietnamese Manufacturing Facility Shutdown - Typhoon Saola",
+    "disruptionType": "Supplier Shutdown",
+    "disruptionLocation": "Ho Chi Minh City, Vietnam",
+    "createdAt": "2025-09-15T00:00:00Z",
+    "status": "Completed",
+    "type": "pharmaceutical",
+    "variables": [
+      {"name": "Supplier Name", "value": "PharmaChem Vietnam Ltd.", "type": "supplier"},
+      {"name": "Disruption Cause", "value": "Natural Disaster - Typhoon", "type": "severity"},
+      {"name": "Duration", "value": "21 days", "type": "duration"}
+    ],
+    "summary": {
+      "totalOrdersImpacted": 370,
+      "totalRevenue": 2020000,
+      "averageDelay": 21,
+      "criticalOrders": 8
+    },
+    "cascadeEvents": [
+      {"id": "ce-pharma-001", "timestamp": "2025-09-15T00:00:00Z", "eventType": "Natural Disaster", "description": "Typhoon Saola hits Vietnam - Supplier shutdown begins", "severity": "Critical", "affectedEntities": ["PharmaChem Vietnam Ltd."]},
+      {"id": "ce-pharma-002", "timestamp": "2025-09-20T00:00:00Z", "eventType": "Supplier Confirmation", "description": "Supplier confirms 21-day complete shutdown", "severity": "Critical", "affectedEntities": ["PharmaChem Vietnam Ltd."]},
+      {"id": "ce-pharma-003", "timestamp": "2025-10-11T00:00:00Z", "eventType": "First Stockout", "description": "MedCare Hospital reports Amoxicillin stockout", "severity": "Critical", "affectedEntities": ["ST-1043"]},
+      {"id": "ce-pharma-004", "timestamp": "2025-10-29T00:00:00Z", "eventType": "Peak Stockout", "description": "All warehouses depleted - 8 SKUs at zero inventory", "severity": "Critical", "affectedEntities": ["WH-West", "WH-East", "WH-Central", "WH-South"]}
+    ],
+    "impactedOrders": []
   }
 ]

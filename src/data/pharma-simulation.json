@@ -1,0 +1,208 @@
+{
+  "id": "sim-pharma-001",
+  "name": "Vietnamese Manufacturing Facility Shutdown - Typhoon Saola",
+  "disruptionType": "Supplier Shutdown",
+  "disruptionLocation": "Ho Chi Minh City, Vietnam",
+  "createdAt": "2025-09-15T00:00:00Z",
+  "status": "Completed",
+  "type": "pharmaceutical",
+  "variables": [
+    {"name": "Supplier Name", "value": "PharmaChem Vietnam Ltd.", "type": "supplier"},
+    {"name": "Disruption Cause", "value": "Natural Disaster - Typhoon", "type": "severity"},
+    {"name": "Duration", "value": "21 days", "type": "duration"},
+    {"name": "Severity", "value": "100% Complete Shutdown", "type": "severity"}
+  ],
+  "summary": {
+    "totalRevenue": 2020000,
+    "lostSales": 1895000,
+    "customerPenalties": 125000,
+    "skusAffected": 8,
+    "totalSkus": 12,
+    "storesAffected": 370,
+    "totalStores": 450,
+    "warehousesDisrupted": 4,
+    "peakStockoutDuration": 21.4,
+    "patientsImpacted": 45000
+  },
+  "timeline": [
+    {"day": 0, "date": "Sept 15", "event": "Typhoon hits Vietnam - Supplier shutdown begins", "phase": "disruption"},
+    {"day": 5, "date": "Sept 20", "event": "Supplier confirms 21-day closure", "phase": "assessment"},
+    {"day": 12, "date": "Sept 27", "event": "Last in-transit shipment arrives (+85,000 units)", "phase": "assessment"},
+    {"day": 26, "date": "Oct 11", "event": "First store stockout (MedCare Hospital)", "phase": "impact"},
+    {"day": 30, "date": "Oct 15", "event": "Safety stock breached on 5 SKUs", "phase": "impact"},
+    {"day": 44, "date": "Oct 29", "event": "All warehouses depleted - Peak stockout begins", "phase": "critical"},
+    {"day": 66, "date": "Nov 20", "event": "Supplier resumes operations", "phase": "recovery"},
+    {"day": 111, "date": "Jan 4", "event": "First post-disruption shipment arrives", "phase": "recovery"},
+    {"day": 125, "date": "Jan 18", "event": "Inventory levels return to normal", "phase": "normal"}
+  ],
+  "affectedSKUs": [
+    {
+      "skuId": "SKU-001",
+      "productName": "Amoxicillin 500mg",
+      "category": "Antibiotic",
+      "supplierDependency": 100,
+      "dependencyLabel": "Sole Source",
+      "currentStock": 45000,
+      "dailyDemand": 1200,
+      "daysOfSupply": 37.5,
+      "inTransit": 8500,
+      "arrivalDay": 12,
+      "stockoutDay": 44.6,
+      "stockoutDuration": 21.4,
+      "unitsShort": 25680,
+      "revenueImpact": 64200,
+      "unitPrice": 2.50,
+      "explainability": {
+        "calculation": "Current Stock: 45,000 units\nDaily Demand: 1,200 units/day\nIn-transit: 8,500 units (Day 12)\nExtended supply: (45,000 + 8,500) / 1,200 = 44.6 days\nDisrupted resupply: 45 days + 21 days = 66 days\nStockout period: 66 - 44.6 = 21.4 days\nUnits short: 1,200 × 21.4 = 25,680 units\nRevenue impact: 25,680 × $2.50 = $64,200",
+        "whyMatters": "Amoxicillin is a sole-source SKU (100% from this supplier). No alternative supplier in network. Critical antibiotic with consistent demand.",
+        "dataSource": "Historical demand (90-day average): 1,200 units/day. Demand volatility: ±5% (low). Safety stock target: 18,000 units (15 days)."
+      }
+    },
+    {
+      "skuId": "SKU-002",
+      "productName": "Ibuprofen 200mg",
+      "category": "Pain Relief",
+      "supplierDependency": 60,
+      "dependencyLabel": "Primary (60%)",
+      "currentStock": 78000,
+      "dailyDemand": 2500,
+      "daysOfSupply": 31.2,
+      "inTransit": 12000,
+      "arrivalDay": 12,
+      "stockoutDay": 36.0,
+      "stockoutDuration": 30.0,
+      "unitsShort": 75000,
+      "revenueImpact": 150000,
+      "unitPrice": 2.00,
+      "explainability": {
+        "calculation": "Current Stock: 78,000 units\nDaily Demand: 2,500 units/day\nIn-transit: 12,000 units (Day 12)\nExtended supply: (78,000 + 12,000) / 2,500 = 36 days\nStockout period: 66 - 36 = 30 days\nUnits short: 2,500 × 30 = 75,000 units",
+        "whyMatters": "60% of supply from this supplier. Alternative suppliers exist but capacity limited.",
+        "dataSource": "Historical demand shows 2,500 units/day average with ±8% volatility."
+      }
+    },
+    {
+      "skuId": "SKU-003",
+      "productName": "Metformin 1000mg",
+      "category": "Diabetes",
+      "supplierDependency": 100,
+      "dependencyLabel": "Sole Source",
+      "currentStock": 32000,
+      "dailyDemand": 900,
+      "daysOfSupply": 35.6,
+      "inTransit": 6500,
+      "arrivalDay": 12,
+      "stockoutDay": 42.8,
+      "stockoutDuration": 23.2,
+      "unitsShort": 20880,
+      "revenueImpact": 66816,
+      "unitPrice": 3.20,
+      "explainability": {
+        "calculation": "Current Stock: 32,000 units\nDaily Demand: 900 units/day\nExtended supply: (32,000 + 6,500) / 900 = 42.8 days\nStockout period: 66 - 42.8 = 23.2 days\nUnits short: 900 × 23.2 = 20,880 units",
+        "whyMatters": "Critical diabetes medication with zero substitute availability. Patient health risk if stockout occurs.",
+        "dataSource": "Steady demand pattern, low volatility (±3%). 12-month average: 900 units/day."
+      }
+    }
+  ],
+  "warehouseImpact": [
+    {
+      "warehouseId": "WH-West",
+      "location": "Los Angeles, CA",
+      "skuId": "SKU-001",
+      "currentStock": 12000,
+      "dailyOutflow": 350,
+      "storesServed": 98,
+      "stockoutDate": "October 19",
+      "daysUntilStockout": 34.3,
+      "affectedStores": {
+        "hospital": 15,
+        "chain": 28,
+        "independent": 55
+      },
+      "revenueExposure": 18725,
+      "explainability": {
+        "whyHighestRisk": "WH-West runs out first due to:\n- Higher demand density (98 stores vs 62 in Atlanta)\n- Faster inventory turnover rate\n- Received smaller allocation in last replenishment (12k vs 15k in Newark)\n\nAffected stores include 15 hospital pharmacies (critical accounts)."
+      }
+    },
+    {
+      "warehouseId": "WH-East",
+      "location": "Newark, NJ",
+      "skuId": "SKU-001",
+      "currentStock": 15000,
+      "dailyOutflow": 400,
+      "storesServed": 125,
+      "stockoutDate": "October 21",
+      "daysUntilStockout": 37.5,
+      "affectedStores": {
+        "hospital": 18,
+        "chain": 42,
+        "independent": 65
+      },
+      "revenueExposure": 21400
+    }
+  ],
+  "topAffectedStores": [
+    {
+      "storeId": "ST-1043",
+      "name": "MedCare Hospital Pharmacy",
+      "type": "Hospital",
+      "location": "Los Angeles, CA",
+      "skusAffected": 8,
+      "revenueAtRisk": 125400,
+      "patientImpact": 2300,
+      "explainability": {
+        "whyMostAffected": "Hospital pharmacy = high-volume, critical care.\nServes 2,300 patients monthly across 8 affected SKUs.\nHigher unit prices due to hospital contracts.\nZero tolerance for stockouts (patient safety).\n\nPatient care implications:\n- 600 patients need Amoxicillin prescriptions filled elsewhere\n- Average patient travel to alternative pharmacy: 4.2 miles\n- Regulatory risk: Hospital must report medication shortages to FDA"
+      }
+    },
+    {
+      "storeId": "ST-0892",
+      "name": "CVS Pharmacy #5421",
+      "type": "Chain",
+      "location": "San Francisco, CA",
+      "skusAffected": 7,
+      "revenueAtRisk": 89200,
+      "patientImpact": 1800
+    },
+    {
+      "storeId": "ST-1256",
+      "name": "Community Health Pharmacy",
+      "type": "Independent",
+      "location": "Newark, NJ",
+      "skusAffected": 9,
+      "revenueAtRisk": 78600,
+      "patientImpact": 1200
+    }
+  ],
+  "explainability": {
+    "dataSources": {
+      "supplierData": {
+        "source": "Supplier Master Database (SAP)",
+        "lastUpdated": "September 10, 2025",
+        "records": "1,247 suppliers, filtered to PharmaChem Vietnam"
+      },
+      "inventoryData": {
+        "source": "Warehouse Management System (WMS)",
+        "syncFrequency": "Every 4 hours",
+        "lastSync": "September 14, 2025, 11:45 PM",
+        "totalRecords": "524,000 units across 4 warehouses"
+      },
+      "demandData": {
+        "source": "Point-of-Sale (POS) system",
+        "historicalPeriod": "90 days (June 15 - Sept 14)",
+        "seasonalityAdjustment": "None (steady demand)",
+        "outliersRemoved": "Yes (3 data points >3 std dev)"
+      }
+    },
+    "assumptions": [
+      {"assumption": "Demand remains constant", "value": "90-day average", "justification": "Pharma demand is relatively stable (±5% variance)"},
+      {"assumption": "Supplier shutdown is complete", "value": "100%", "justification": "Per supplier communication (email Sept 20)"},
+      {"assumption": "No alternative suppliers available", "value": "True", "justification": "Current network has no backup for 8/12 SKUs"},
+      {"assumption": "Backorders not allowed", "value": "True", "justification": "Company policy: stockouts = lost sales"}
+    ],
+    "confidenceLevels": {
+      "stockoutDate": {"level": 90, "label": "High", "reason": "Based on stable demand patterns"},
+      "revenueImpact": {"level": 75, "label": "Medium", "reason": "Depends on customer behavior during stockout"},
+      "patientImpact": {"level": 70, "label": "Medium", "reason": "Estimates based on prescription fill rates"},
+      "recoveryTimeline": {"level": 85, "label": "High", "reason": "Supplier has confirmed restart date"}
+    }
+  }
+}

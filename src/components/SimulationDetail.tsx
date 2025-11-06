@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSimulations } from '../context/SimulationContext';
 import { ImpactedOrder } from '../types/simulation';
+import PharmaceuticalDetail from './PharmaceuticalDetail';
 
 type OrderSortField = 'orderId' | 'customerName' | 'orderValue' | 'delayDays' | 'status';
 type TabType = 'simulation' | 'recommendations';
@@ -27,6 +28,11 @@ const SimulationDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { getSimulation } = useSimulations();
   const simulation = getSimulation(id!);
+
+  // Check if this is a pharmaceutical simulation
+  if (simulation && (simulation as any).type === 'pharmaceutical') {
+    return <PharmaceuticalDetail />;
+  }
 
   const [activeTab, setActiveTab] = useState<TabType>('simulation');
   const [selectedNode, setSelectedNode] = useState<number>(5);
