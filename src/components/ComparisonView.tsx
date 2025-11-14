@@ -18,7 +18,7 @@ const ComparisonView: React.FC = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">No Simulations Selected</h2>
           <p className="text-gray-600 mb-6">Please select 2-3 simulations to compare</p>
           <Link to="/" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-            Back to Simulations
+            Back to Scenario List
           </Link>
         </div>
       </div>
@@ -75,7 +75,7 @@ const ComparisonView: React.FC = () => {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Back to Simulations
+            Back to Scenario List
           </Link>
           <div className="mt-4 flex justify-between items-center">
             <div>

@@ -540,7 +540,7 @@ const SupplierShutdownDetail: React.FC = () => {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Back to Simulations
+            Back to Scenario List
           </Link>
           <div className="mt-4">
             <h1 className="text-3xl font-bold text-gray-900">{scenarioData.name}</h1>

@@ -18,7 +18,8 @@ const CreateSimulationV2: React.FC = () => {
   const navigate = useNavigate();
   const { addSimulation } = useSimulations();
 
-  // Step 1: Scenario Type
+  // Step 1: Scenario Name and Type
+  const [scenarioName, setScenarioName] = useState('');
   const [scenarioType, setScenarioType] = useState<ScenarioType>('Demand Change');
 
   // Step 2: Dynamic Fields
@@ -104,6 +105,7 @@ const CreateSimulationV2: React.FC = () => {
     setCapacityAvailable('');
     setStartDate('');
     setEndDate('');
+    // Don't reset scenario name when changing type
   }, [scenarioType]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -129,7 +131,8 @@ const CreateSimulationV2: React.FC = () => {
       },
     ];
 
-    let simulationName = '';
+    // Use user-provided scenario name
+    const simulationName = scenarioName;
 
     switch (scenarioType) {
       case 'Demand Change':
@@ -138,7 +141,6 @@ const CreateSimulationV2: React.FC = () => {
           ? masterData.skus.find(s => s.id === target)?.name
           : masterData.productGroups.find(p => p.id === target)?.name;
 
-        simulationName = `Demand Change: ${targetName} (${demandChangePercent > 0 ? '+' : ''}${demandChangePercent}%)`;
         variables.push(
           { name: 'Selection Type', value: selectionType, type: 'selection' },
           { name: selectionType === 'SKU' ? 'SKU' : 'Product Group', value: targetName || '', type: 'product' },
@@ -148,7 +150,6 @@ const CreateSimulationV2: React.FC = () => {
 
       case 'Supplier Shutdown':
         const supplierName = masterData.suppliers.find(s => s.id === selectedSupplier)?.name;
-        simulationName = `Supplier Shutdown: ${supplierName}`;
         variables.push(
           { name: 'Supplier', value: supplierName || '', type: 'supplier' }
         );
@@ -156,7 +157,6 @@ const CreateSimulationV2: React.FC = () => {
 
       case 'Port Congestion':
         const portName = masterData.ports.find(p => p.id === selectedPort)?.name;
-        simulationName = `Port Congestion: ${portName} (+${transitDelay} days)`;
         variables.push(
           { name: 'Port/Location', value: portName || '', type: 'location' },
           { name: 'Transit Delay', value: `${transitDelay} days`, type: 'duration' }
@@ -165,7 +165,6 @@ const CreateSimulationV2: React.FC = () => {
 
       case 'Manufacturing Plant Shutdown':
         const plantName = masterData.plants.find(p => p.id === selectedPlant)?.name;
-        simulationName = `Plant Shutdown: ${plantName} (${capacityAvailable}% capacity)`;
         variables.push(
           { name: 'Manufacturing Plant', value: plantName || '', type: 'plant' },
           { name: 'Capacity Available', value: `${capacityAvailable}%`, type: 'percentage' }
@@ -511,10 +510,10 @@ const CreateSimulationV2: React.FC = () => {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Back to Simulations
+            Back to Scenario List
           </Link>
           <div className="mt-4">
-            <h1 className="text-3xl font-bold text-gray-900">Create New Simulation</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Create Scenario</h1>
             <p className="mt-2 text-sm text-gray-600">
               Build a scenario to simulate supply chain impacts
             </p>
@@ -525,30 +524,47 @@ const CreateSimulationV2: React.FC = () => {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <form onSubmit={handleSubmit}>
             <div className="space-y-6">
-              {/* Step 1: Scenario Type Selection */}
+              {/* Step 1: Scenario Name and Type Selection */}
               <div className="border-b border-gray-200 pb-6">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-semibold text-sm">
                     1
                   </div>
-                  <h2 className="text-lg font-semibold text-gray-900">Scenario Type</h2>
+                  <h2 className="text-lg font-semibold text-gray-900">Scenario Name & Type</h2>
                 </div>
 
-                <div>
-                  <label htmlFor="scenarioType" className="block text-sm font-medium text-gray-700 mb-2">
-                    Select Scenario Type *
-                  </label>
-                  <select
-                    id="scenarioType"
-                    value={scenarioType}
-                    onChange={(e) => setScenarioType(e.target.value as ScenarioType)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                  >
-                    <option value="Demand Change">Demand Change</option>
-                    <option value="Supplier Shutdown">Supplier Shutdown</option>
-                    <option value="Port Congestion">Port Congestion</option>
-                    <option value="Manufacturing Plant Shutdown">Manufacturing Plant Shutdown</option>
-                  </select>
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="scenarioName" className="block text-sm font-medium text-gray-700 mb-2">
+                      Scenario Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="scenarioName"
+                      value={scenarioName}
+                      onChange={(e) => setScenarioName(e.target.value)}
+                      required
+                      placeholder="e.g., Q4 Holiday Season Supply Chain Impact"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="scenarioType" className="block text-sm font-medium text-gray-700 mb-2">
+                      Scenario Type *
+                    </label>
+                    <select
+                      id="scenarioType"
+                      value={scenarioType}
+                      onChange={(e) => setScenarioType(e.target.value as ScenarioType)}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    >
+                      <option value="Demand Change">Demand Change</option>
+                      <option value="Supplier Shutdown">Supplier Shutdown</option>
+                      <option value="Port Congestion">Port Congestion</option>
+                      <option value="Manufacturing Plant Shutdown">Manufacturing Plant Shutdown</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
