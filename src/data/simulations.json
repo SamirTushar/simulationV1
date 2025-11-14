@@ -1,7 +1,7 @@
 [
   {
     "id": "sim-001",
-    "name": "Shanghai Port Congestion - Q4 Electronics",
+    "name": "Shanghai Port Congestion - Electronics Supply Chain Impact",
     "disruptionType": "Port Congestion",
     "disruptionLocation": "Shanghai, China",
     "createdAt": "2025-10-15T09:30:00Z",
@@ -12,193 +12,103 @@
       {"name": "Severity", "value": "High", "type": "severity"}
     ],
     "summary": {
-      "totalOrdersImpacted": 147,
-      "totalRevenue": 8750000,
-      "averageDelay": 18,
-      "criticalOrders": 23
+      "totalOrdersImpacted": 247,
+      "totalRevenue": 18450000,
+      "averageDelay": 14,
+      "criticalOrders": 58
     },
     "cascadeEvents": [
-      {"id": "ce-001", "timestamp": "2025-10-15T09:30:00Z", "eventType": "Initial Disruption", "description": "Port congestion at Shanghai terminal. Average wait time: 5-7 days", "severity": "High", "affectedEntities": ["Shanghai Port", "Container Terminal 3"]},
-      {"id": "ce-002", "timestamp": "2025-10-15T12:45:00Z", "eventType": "Supplier Impact", "description": "3 key electronics suppliers unable to ship on schedule", "severity": "High", "affectedEntities": ["Foxconn", "Delta Electronics"]},
-      {"id": "ce-003", "timestamp": "2025-10-16T08:00:00Z", "eventType": "Inventory Shortage", "description": "West Coast warehouse inventory projected to run low", "severity": "Critical", "affectedEntities": ["Los Angeles DC", "San Francisco DC"]}
+      {"id": "ce-001", "timestamp": "2025-10-15T09:30:00Z", "eventType": "Initial Disruption", "description": "Severe congestion at Shanghai port. Container wait times extended to 7-10 days", "severity": "High", "affectedEntities": ["Shanghai Port", "Container Terminal"]},
+      {"id": "ce-002", "timestamp": "2025-10-16T08:00:00Z", "eventType": "Transit Delays", "description": "Raw material shipments delayed. 15 shipments affected with average delay of 14 days", "severity": "High", "affectedEntities": ["Container Shipments"]},
+      {"id": "ce-003", "timestamp": "2025-10-17T10:00:00Z", "eventType": "Raw Material Shortage", "description": "Distribution centers experiencing component shortages. 12 components below safety stock", "severity": "Critical", "affectedEntities": ["Distribution Centers"]},
+      {"id": "ce-004", "timestamp": "2025-10-18T12:00:00Z", "eventType": "Production Delays", "description": "Manufacturing lines slowing down due to component shortages. 8 production lines affected", "severity": "Critical", "affectedEntities": ["Production Lines"]},
+      {"id": "ce-005", "timestamp": "2025-10-20T14:00:00Z", "eventType": "FG Inventory Depletion", "description": "Finished goods inventory depleting. 18 SKUs at risk across distribution centers", "severity": "High", "affectedEntities": ["FG Inventory"]},
+      {"id": "ce-006", "timestamp": "2025-10-22T16:00:00Z", "eventType": "Customer Order Impact", "description": "Customer orders at risk. 247 orders totaling $18.45M affected, 58 critical orders", "severity": "Critical", "affectedEntities": ["Customer Orders"]}
     ],
-    "impactedOrders": [
-      {"orderId": "ORD-2025-10847", "customerName": "Best Buy", "sku": "LAPTOP-XPS13-001", "quantity": 500, "orderValue": 650000, "originalDeliveryDate": "2025-11-01", "newDeliveryDate": "2025-11-22", "delayDays": 21, "status": "Critical"},
-      {"orderId": "ORD-2025-10923", "customerName": "Amazon", "sku": "TABLET-IPAD-PRO-128", "quantity": 1200, "orderValue": 960000, "originalDeliveryDate": "2025-11-05", "newDeliveryDate": "2025-11-20", "delayDays": 15, "status": "Delayed"},
-      {"orderId": "ORD-2025-11034", "customerName": "Walmart", "sku": "SMARTPHONE-GALAXY-S24", "quantity": 800, "orderValue": 720000, "originalDeliveryDate": "2025-11-10", "newDeliveryDate": "2025-11-28", "delayDays": 18, "status": "Critical"},
-      {"orderId": "ORD-2025-11156", "customerName": "Target", "sku": "SMARTWATCH-APPLE-S9", "quantity": 600, "orderValue": 245000, "originalDeliveryDate": "2025-11-08", "newDeliveryDate": "2025-11-24", "delayDays": 16, "status": "Delayed"},
-      {"orderId": "ORD-2025-11267", "customerName": "Costco", "sku": "LAPTOP-MACBOOK-AIR", "quantity": 350, "orderValue": 420000, "originalDeliveryDate": "2025-11-12", "newDeliveryDate": "2025-11-27", "delayDays": 15, "status": "Delayed"},
-      {"orderId": "ORD-2025-11389", "customerName": "Newegg", "sku": "MONITOR-DELL-27-4K", "quantity": 450, "orderValue": 315000, "originalDeliveryDate": "2025-11-06", "newDeliveryDate": "2025-11-26", "delayDays": 20, "status": "Critical"},
-      {"orderId": "ORD-2025-11445", "customerName": "B&H Photo", "sku": "CAMERA-CANON-R5", "quantity": 120, "orderValue": 450000, "originalDeliveryDate": "2025-11-09", "newDeliveryDate": "2025-11-30", "delayDays": 21, "status": "Critical"},
-      {"orderId": "ORD-2025-11523", "customerName": "Office Depot", "sku": "PRINTER-HP-LASERJET", "quantity": 800, "orderValue": 240000, "originalDeliveryDate": "2025-11-11", "newDeliveryDate": "2025-11-25", "delayDays": 14, "status": "Delayed"},
-      {"orderId": "ORD-2025-11678", "customerName": "Staples", "sku": "TABLET-SAMSUNG-TAB-S9", "quantity": 950, "orderValue": 570000, "originalDeliveryDate": "2025-11-07", "newDeliveryDate": "2025-11-23", "delayDays": 16, "status": "Delayed"},
-      {"orderId": "ORD-2025-11789", "customerName": "Micro Center", "sku": "DESKTOP-ALIENWARE-R16", "quantity": 200, "orderValue": 540000, "originalDeliveryDate": "2025-11-13", "newDeliveryDate": "2025-12-02", "delayDays": 19, "status": "Critical"},
-      {"orderId": "ORD-2025-11834", "customerName": "Fry's Electronics", "sku": "KEYBOARD-LOGITECH-MX", "quantity": 1500, "orderValue": 180000, "originalDeliveryDate": "2025-11-04", "newDeliveryDate": "2025-11-21", "delayDays": 17, "status": "Delayed"},
-      {"orderId": "ORD-2025-11945", "customerName": "GameStop", "sku": "CONSOLE-PS5-DIGITAL", "quantity": 700, "orderValue": 280000, "originalDeliveryDate": "2025-11-15", "newDeliveryDate": "2025-12-03", "delayDays": 18, "status": "Critical"},
-      {"orderId": "ORD-2025-12056", "customerName": "Microsoft Store", "sku": "SURFACE-PRO-9", "quantity": 400, "orderValue": 520000, "originalDeliveryDate": "2025-11-08", "newDeliveryDate": "2025-11-29", "delayDays": 21, "status": "Critical"},
-      {"orderId": "ORD-2025-12123", "customerName": "Apple Store", "sku": "AIRPODS-PRO-2ND-GEN", "quantity": 2000, "orderValue": 500000, "originalDeliveryDate": "2025-11-10", "newDeliveryDate": "2025-11-24", "delayDays": 14, "status": "Delayed"},
-      {"orderId": "ORD-2025-12234", "customerName": "Verizon", "sku": "SMARTPHONE-IPHONE-15", "quantity": 1100, "orderValue": 880000, "originalDeliveryDate": "2025-11-14", "newDeliveryDate": "2025-12-01", "delayDays": 17, "status": "Delayed"}
-    ]
+    "impactedOrders": []
   },
   {
     "id": "sim-002",
-    "name": "Semiconductor Supplier Quality Issue",
-    "disruptionType": "Quality Issue",
-    "disruptionLocation": "Taiwan",
+    "name": "Supplier Shutdown - Semiconductor Component Crisis",
+    "disruptionType": "Supplier Shutdown",
+    "disruptionLocation": "Hsinchu, Taiwan",
     "createdAt": "2025-09-28T14:20:00Z",
     "status": "Completed",
     "variables": [
-      {"name": "Supplier", "value": "Taiwan Semiconductor Manufacturing", "type": "supplier"},
-      {"name": "Component Type", "value": "5nm Chipsets", "type": "product"},
-      {"name": "Impact Duration", "value": "21 days", "type": "duration"}
+      {"name": "Supplier", "value": "TSMC Taiwan", "type": "supplier"},
+      {"name": "Component Type", "value": "Advanced Chipsets", "type": "product"},
+      {"name": "Impact Duration", "value": "28 days", "type": "duration"}
     ],
     "summary": {
-      "totalOrdersImpacted": 89,
-      "totalRevenue": 12400000,
-      "averageDelay": 25,
-      "criticalOrders": 31
+      "totalOrdersImpacted": 312,
+      "totalRevenue": 24680000,
+      "averageDelay": 28,
+      "criticalOrders": 89
     },
     "cascadeEvents": [
-      {"id": "ce-006", "timestamp": "2025-09-28T14:20:00Z", "eventType": "Quality Alert", "description": "Quality control failure detected in 5nm chipset production", "severity": "Critical", "affectedEntities": ["TSMC Fab 18"]},
-      {"id": "ce-007", "timestamp": "2025-09-28T18:00:00Z", "eventType": "Production Halt", "description": "Production line stopped. Estimated 3-week delay", "severity": "Critical", "affectedEntities": ["TSMC Fab 18"]}
+      {"id": "ce-007", "timestamp": "2025-09-28T14:20:00Z", "eventType": "Initial Disruption", "description": "TSMC Taiwan announces complete production shutdown. Earthquake damage to Fab 18", "severity": "Critical", "affectedEntities": ["TSMC Taiwan", "Fab 18"]},
+      {"id": "ce-008", "timestamp": "2025-09-29T08:00:00Z", "eventType": "Component Supply Halt", "description": "All active purchase orders halted. 28 POs totaling $68.4M affected", "severity": "Critical", "affectedEntities": ["Purchase Orders"]},
+      {"id": "ce-009", "timestamp": "2025-10-01T10:00:00Z", "eventType": "Raw Material Shortage", "description": "Critical semiconductor components depleting. 18 components at critical levels", "severity": "Critical", "affectedEntities": ["Component Inventory"]},
+      {"id": "ce-010", "timestamp": "2025-10-03T12:00:00Z", "eventType": "Production Line Stoppages", "description": "Manufacturing lines completely stopped. 14 production lines at zero output", "severity": "Critical", "affectedEntities": ["Production Lines"]},
+      {"id": "ce-011", "timestamp": "2025-10-05T14:00:00Z", "eventType": "FG Inventory Depletion", "description": "Finished goods inventory rapidly depleting. 22 critical SKUs affected", "severity": "Critical", "affectedEntities": ["FG Inventory"]},
+      {"id": "ce-012", "timestamp": "2025-10-08T16:00:00Z", "eventType": "Customer Order Impact", "description": "Mass order cancellations imminent. 312 orders totaling $24.68M at risk", "severity": "Critical", "affectedEntities": ["Customer Orders"]}
     ],
-    "impactedOrders": [
-      {"orderId": "ORD-2025-09234", "customerName": "Apple Store", "sku": "IPHONE-15-PRO-256GB", "quantity": 2500, "orderValue": 2750000, "originalDeliveryDate": "2025-10-20", "newDeliveryDate": "2025-11-18", "delayDays": 29, "status": "Critical"},
-      {"orderId": "ORD-2025-09445", "customerName": "Samsung Direct", "sku": "GALAXY-S24-ULTRA", "quantity": 1800, "orderValue": 2160000, "originalDeliveryDate": "2025-10-25", "newDeliveryDate": "2025-11-20", "delayDays": 26, "status": "Critical"}
-    ]
+    "impactedOrders": []
   },
   {
     "id": "sim-003",
-    "name": "Hurricane Impact - Gulf Coast Logistics",
-    "disruptionType": "Weather Event",
-    "disruptionLocation": "Houston, TX",
-    "createdAt": "2025-08-12T07:00:00Z",
+    "name": "Manufacturing Plant Shutdown - Texas Facility Maintenance",
+    "disruptionType": "Plant Shutdown",
+    "disruptionLocation": "Austin, Texas",
+    "createdAt": "2025-11-01T08:00:00Z",
     "status": "Completed",
     "variables": [
-      {"name": "Event Location", "value": "Houston, TX & New Orleans, LA", "type": "location"},
-      {"name": "Hurricane Category", "value": "Category 3", "type": "severity"},
-      {"name": "Recovery Time", "value": "10 days", "type": "duration"}
+      {"name": "Plant", "value": "Plant-Texas-01 (Austin)", "type": "location"},
+      {"name": "Shutdown Duration", "value": "Nov 10 - Nov 24, 2025", "type": "duration"},
+      {"name": "Capacity Available", "value": "30% operational", "type": "capacity"}
     ],
     "summary": {
-      "totalOrdersImpacted": 203,
-      "totalRevenue": 6890000,
-      "averageDelay": 12,
-      "criticalOrders": 45
+      "totalOrdersImpacted": 428,
+      "totalRevenue": 42850000,
+      "averageDelay": 14,
+      "criticalOrders": 118
     },
     "cascadeEvents": [
-      {"id": "ce-010", "timestamp": "2025-08-12T07:00:00Z", "eventType": "Weather Alert", "description": "Category 3 hurricane approaching Gulf Coast", "severity": "Critical", "affectedEntities": ["Port of Houston", "Port of New Orleans"]},
-      {"id": "ce-011", "timestamp": "2025-08-12T14:30:00Z", "eventType": "Port Closure", "description": "All port operations suspended", "severity": "Critical", "affectedEntities": ["Port of Houston"]}
+      {"id": "ce-013", "timestamp": "2025-11-10T00:00:00Z", "eventType": "Initial Disruption", "description": "Plant-Texas-01 begins scheduled maintenance. 70% capacity reduction", "severity": "High", "affectedEntities": ["Plant-Texas-01", "8 Production Lines"]},
+      {"id": "ce-014", "timestamp": "2025-11-10T08:00:00Z", "eventType": "Production Capacity Reduction", "description": "8 of 12 production lines shut down. Daily output drops to 30%", "severity": "High", "affectedEntities": ["Production Lines"]},
+      {"id": "ce-015", "timestamp": "2025-11-11T10:00:00Z", "eventType": "Production Output Gap", "description": "Daily production gap of 5,880 units accumulating. 16 SKUs affected", "severity": "Critical", "affectedEntities": ["16 Product SKUs"]},
+      {"id": "ce-016", "timestamp": "2025-11-13T12:00:00Z", "eventType": "Order Backlog Accumulation", "description": "Order backlog growing at 240+ orders/day. Only 30% fulfillment rate", "severity": "Critical", "affectedEntities": ["Order Queue"]},
+      {"id": "ce-017", "timestamp": "2025-11-15T14:00:00Z", "eventType": "FG Inventory Depletion", "description": "Distribution centers running low. 12 SKUs below safety stock", "severity": "High", "affectedEntities": ["7 Distribution Centers"]},
+      {"id": "ce-018", "timestamp": "2025-11-17T16:00:00Z", "eventType": "Customer Order Impact", "description": "428 customer orders delayed. $42.85M revenue at risk", "severity": "Critical", "affectedEntities": ["Customer Orders"]}
     ],
-    "impactedOrders": [
-      {"orderId": "ORD-2025-07823", "customerName": "Home Depot", "sku": "LUMBER-PINE-2X4-8FT", "quantity": 50000, "orderValue": 175000, "originalDeliveryDate": "2025-08-20", "newDeliveryDate": "2025-09-02", "delayDays": 13, "status": "Delayed"},
-      {"orderId": "ORD-2025-08156", "customerName": "Wayfair", "sku": "FURNITURE-SOFA-3SEAT", "quantity": 1200, "orderValue": 960000, "originalDeliveryDate": "2025-08-25", "newDeliveryDate": "2025-09-08", "delayDays": 14, "status": "Critical"}
-    ]
+    "impactedOrders": []
   },
   {
     "id": "sim-004",
-    "name": "European Rail Strike - Automotive Parts",
-    "disruptionType": "Transportation Strike",
-    "disruptionLocation": "Germany",
-    "createdAt": "2025-07-05T11:30:00Z",
+    "name": "Demand Drop - Product Line Phase-Out Impact",
+    "disruptionType": "Demand Drop",
+    "disruptionLocation": "North America Consumer Segment",
+    "createdAt": "2025-11-05T10:15:00Z",
     "status": "Completed",
     "variables": [
-      {"name": "Strike Location", "value": "Germany & France", "type": "location"},
-      {"name": "Strike Duration", "value": "7 days", "type": "duration"},
-      {"name": "Industry", "value": "Automotive Manufacturing", "type": "product"}
+      {"name": "Product Line", "value": "Intel 12th Gen Laptops", "type": "product"},
+      {"name": "Demand Drop", "value": "-65%", "type": "percentage"},
+      {"name": "Market Trigger", "value": "Intel 14th Gen Launch", "type": "market_event"},
+      {"name": "Impact Duration", "value": "4 months", "type": "duration"}
     ],
     "summary": {
-      "totalOrdersImpacted": 124,
-      "totalRevenue": 15600000,
-      "averageDelay": 9,
-      "criticalOrders": 38
+      "totalOrdersImpacted": 342,
+      "totalRevenue": 28450000,
+      "averageDelay": 0,
+      "criticalOrders": 156
     },
     "cascadeEvents": [
-      {"id": "ce-015", "timestamp": "2025-07-05T11:30:00Z", "eventType": "Strike Announcement", "description": "Railway workers union announces 7-day strike", "severity": "High", "affectedEntities": ["Deutsche Bahn", "SNCF"]},
-      {"id": "ce-016", "timestamp": "2025-07-06T06:00:00Z", "eventType": "Supplier Delays", "description": "Parts suppliers unable to deliver via rail", "severity": "High", "affectedEntities": ["Bosch GmbH", "Continental AG"]}
-    ],
-    "impactedOrders": [
-      {"orderId": "ORD-2025-06445", "customerName": "BMW North America", "sku": "BMW-X5-XDRIVE40I", "quantity": 450, "orderValue": 2925000, "originalDeliveryDate": "2025-07-25", "newDeliveryDate": "2025-08-05", "delayDays": 11, "status": "Critical"},
-      {"orderId": "ORD-2025-06589", "customerName": "Volkswagen USA", "sku": "VW-TIGUAN-SEL", "quantity": 600, "orderValue": 2400000, "originalDeliveryDate": "2025-07-28", "newDeliveryDate": "2025-08-06", "delayDays": 9, "status": "Delayed"}
-    ]
-  },
-  {
-    "id": "sim-005",
-    "name": "Vietnam Supplier Delay - Apparel Production",
-    "disruptionType": "Supplier Delay",
-    "disruptionLocation": "Ho Chi Minh City, Vietnam",
-    "createdAt": "2025-06-18T08:45:00Z",
-    "status": "Completed",
-    "variables": [
-      {"name": "Supplier Location", "value": "Ho Chi Minh City, Vietnam", "type": "location"},
-      {"name": "Delay Cause", "value": "Power Grid Failure", "type": "severity"},
-      {"name": "Recovery Time", "value": "12 days", "type": "duration"}
-    ],
-    "summary": {
-      "totalOrdersImpacted": 178,
-      "totalRevenue": 4250000,
-      "averageDelay": 14,
-      "criticalOrders": 52
-    },
-    "cascadeEvents": [
-      {"id": "ce-019", "timestamp": "2025-06-18T08:45:00Z", "eventType": "Infrastructure Failure", "description": "Major power grid failure affecting 15 factories", "severity": "Critical", "affectedEntities": ["Ho Chi Minh Industrial Zone 1"]},
-      {"id": "ce-020", "timestamp": "2025-06-18T15:30:00Z", "eventType": "Production Stoppage", "description": "All garment production halted at key facilities", "severity": "Critical", "affectedEntities": ["Texwell Vietnam", "Hansae Vietnam"]}
-    ],
-    "impactedOrders": [
-      {"orderId": "ORD-2025-05334", "customerName": "Gap Inc", "sku": "TSHIRT-COTTON-BASIC-MED", "quantity": 25000, "orderValue": 125000, "originalDeliveryDate": "2025-07-01", "newDeliveryDate": "2025-07-18", "delayDays": 17, "status": "Critical"},
-      {"orderId": "ORD-2025-05489", "customerName": "H&M", "sku": "DRESS-SUMMER-FLORAL", "quantity": 18000, "orderValue": 540000, "originalDeliveryDate": "2025-07-05", "newDeliveryDate": "2025-07-20", "delayDays": 15, "status": "Critical"}
-    ]
-  },
-  {
-    "id": "sim-006",
-    "name": "Customs Delay - UK Post-Brexit Pharmaceutical",
-    "disruptionType": "Customs Delay",
-    "disruptionLocation": "Dover, UK",
-    "createdAt": "2025-05-22T13:15:00Z",
-    "status": "Completed",
-    "variables": [
-      {"name": "Origin", "value": "Netherlands & Belgium", "type": "location"},
-      {"name": "Destination", "value": "United Kingdom", "type": "location"},
-      {"name": "Clearance Delay", "value": "8 days", "type": "duration"}
-    ],
-    "summary": {
-      "totalOrdersImpacted": 67,
-      "totalRevenue": 9800000,
-      "averageDelay": 11,
-      "criticalOrders": 28
-    },
-    "cascadeEvents": [
-      {"id": "ce-024", "timestamp": "2025-05-22T13:15:00Z", "eventType": "Customs Processing Delay", "description": "New regulations causing 5-8 day delays", "severity": "High", "affectedEntities": ["Dover Port", "UK Border Force"]},
-      {"id": "ce-025", "timestamp": "2025-05-23T09:00:00Z", "eventType": "Documentation Issues", "description": "42 pharmaceutical shipments held", "severity": "Critical", "affectedEntities": ["MHRA", "UK Customs"]}
-    ],
-    "impactedOrders": [
-      {"orderId": "ORD-2025-04556", "customerName": "NHS Supply Chain", "sku": "MED-INSULIN-GLARGINE", "quantity": 5000, "orderValue": 1250000, "originalDeliveryDate": "2025-06-01", "newDeliveryDate": "2025-06-12", "delayDays": 11, "status": "Critical"},
-      {"orderId": "ORD-2025-04623", "customerName": "Boots Pharmacies", "sku": "MED-ANTIBIOTICS-AMOX", "quantity": 15000, "orderValue": 450000, "originalDeliveryDate": "2025-06-03", "newDeliveryDate": "2025-06-14", "delayDays": 11, "status": "Critical"}
-    ]
-  },
-  {
-    "id": "sim-pharma-001",
-    "name": "Vietnamese Manufacturing Facility Shutdown - Typhoon Saola",
-    "disruptionType": "Supplier Shutdown",
-    "disruptionLocation": "Ho Chi Minh City, Vietnam",
-    "createdAt": "2025-09-15T00:00:00Z",
-    "status": "Completed",
-    "type": "pharmaceutical",
-    "variables": [
-      {"name": "Supplier Name", "value": "PharmaChem Vietnam Ltd.", "type": "supplier"},
-      {"name": "Disruption Cause", "value": "Natural Disaster - Typhoon", "type": "severity"},
-      {"name": "Duration", "value": "21 days", "type": "duration"}
-    ],
-    "summary": {
-      "totalOrdersImpacted": 370,
-      "totalRevenue": 2020000,
-      "averageDelay": 21,
-      "criticalOrders": 8
-    },
-    "cascadeEvents": [
-      {"id": "ce-pharma-001", "timestamp": "2025-09-15T00:00:00Z", "eventType": "Natural Disaster", "description": "Typhoon Saola hits Vietnam - Supplier shutdown begins", "severity": "Critical", "affectedEntities": ["PharmaChem Vietnam Ltd."]},
-      {"id": "ce-pharma-002", "timestamp": "2025-09-20T00:00:00Z", "eventType": "Supplier Confirmation", "description": "Supplier confirms 21-day complete shutdown", "severity": "Critical", "affectedEntities": ["PharmaChem Vietnam Ltd."]},
-      {"id": "ce-pharma-003", "timestamp": "2025-10-11T00:00:00Z", "eventType": "First Stockout", "description": "MedCare Hospital reports Amoxicillin stockout", "severity": "Critical", "affectedEntities": ["ST-1043"]},
-      {"id": "ce-pharma-004", "timestamp": "2025-10-29T00:00:00Z", "eventType": "Peak Stockout", "description": "All warehouses depleted - 8 SKUs at zero inventory", "severity": "Critical", "affectedEntities": ["WH-West", "WH-East", "WH-Central", "WH-South"]}
+      {"id": "ce-019", "timestamp": "2025-11-05T10:15:00Z", "eventType": "Initial Disruption", "description": "Intel 14th Gen launch causes -65% demand drop for 12th Gen laptops. Immediate order cancellations from major retailers", "severity": "High", "affectedEntities": ["Intel 12th Gen Product Line", "North America Market"]},
+      {"id": "ce-020", "timestamp": "2025-11-06T08:00:00Z", "eventType": "Order Cancellations & Reductions", "description": "15 major customers cancel or reduce POs totaling $84.2M. Cancellation penalties of $2.8M incurred", "severity": "Critical", "affectedEntities": ["Customer Orders", "Purchase Orders"]},
+      {"id": "ce-021", "timestamp": "2025-11-08T10:00:00Z", "eventType": "Excess Inventory Accumulation", "description": "12 distribution centers accumulating excess inventory. Total value $28.45M with inventory turns dropping from 15x to 2.1x", "severity": "Critical", "affectedEntities": ["Distribution Centers", "Finished Goods Inventory"]},
+      {"id": "ce-022", "timestamp": "2025-11-10T12:00:00Z", "eventType": "Production Overcapacity", "description": "11 manufacturing lines at only 35% utilization. Unit costs increase by 85% due to fixed cost absorption", "severity": "Critical", "affectedEntities": ["Production Lines", "Manufacturing Plants"]},
+      {"id": "ce-023", "timestamp": "2025-11-12T14:00:00Z", "eventType": "Supplier Contract Exposure", "description": "14 suppliers with take-or-pay contracts. Total penalty exposure $14.22M for minimum purchase commitments", "severity": "High", "affectedEntities": ["Supplier Contracts", "Component Suppliers"]},
+      {"id": "ce-024", "timestamp": "2025-11-15T16:00:00Z", "eventType": "Financial Impact", "description": "Revenue loss of -$110.76M over 4 months. Working capital tied up: $42.67M in excess inventory", "severity": "Critical", "affectedEntities": ["P&L Statement", "Cash Flow", "Working Capital"]}
     ],
     "impactedOrders": []
   }

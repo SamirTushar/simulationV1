@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SimulationProvider } from './context/SimulationContext';
 import SideNavBar from './components/SideNavBar';
 import SimulationList from './components/SimulationList';
-import SimulationDetail from './components/SimulationDetail';
-import CreateSimulationV1 from './components/CreateSimulationV1';
-import CreateSimulationV2 from './components/CreateSimulationV2';
+import CreateSimulation from './components/CreateSimulation';
 import ComparisonView from './components/ComparisonView';
+import PortCongestionDetail from './components/PortCongestionDetail';
+import SupplierShutdownDetail from './components/SupplierShutdownDetail';
+import PlantShutdownDetail from './components/PlantShutdownDetail';
+import DemandDropDetail from './components/DemandDropDetail';
 
 function App() {
   return (
@@ -17,9 +19,11 @@ function App() {
           <div style={{ flex: 1 }}>
             <Routes>
               <Route path="/" element={<SimulationList />} />
-              <Route path="/simulation/:id" element={<SimulationDetail />} />
-              <Route path="/create-v1" element={<CreateSimulationV1 />} />
-              <Route path="/create-v2" element={<CreateSimulationV2 />} />
+              <Route path="/port-congestion/:id" element={<PortCongestionDetail />} />
+              <Route path="/supplier-shutdown/:id" element={<SupplierShutdownDetail />} />
+              <Route path="/plant-shutdown/:id" element={<PlantShutdownDetail />} />
+              <Route path="/demand-drop/:id" element={<DemandDropDetail />} />
+              <Route path="/create" element={<CreateSimulation />} />
               <Route path="/compare" element={<ComparisonView />} />
             </Routes>
           </div>

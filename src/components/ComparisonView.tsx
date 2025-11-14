@@ -44,11 +44,9 @@ const ComparisonView: React.FC = () => {
   const getDisruptionColor = (type: string) => {
     const colors: Record<string, string> = {
       'Port Congestion': 'bg-orange-100 text-orange-800',
-      'Quality Issue': 'bg-red-100 text-red-800',
-      'Weather Event': 'bg-purple-100 text-purple-800',
-      'Transportation Strike': 'bg-yellow-100 text-yellow-800',
-      'Supplier Delay': 'bg-blue-100 text-blue-800',
-      'Customs Delay': 'bg-pink-100 text-pink-800',
+      'Supplier Shutdown': 'bg-red-100 text-red-800',
+      'Plant Shutdown': 'bg-purple-100 text-purple-800',
+      'Demand Drop': 'bg-blue-100 text-blue-800',
     };
     return colors[type] || 'bg-gray-100 text-gray-800';
   };

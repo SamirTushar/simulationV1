@@ -69,11 +69,9 @@ const SimulationList: React.FC = () => {
   const getDisruptionColor = (type: string) => {
     const colors: Record<string, string> = {
       'Port Congestion': 'bg-orange-100 text-orange-800',
-      'Quality Issue': 'bg-red-100 text-red-800',
-      'Weather Event': 'bg-purple-100 text-purple-800',
-      'Transportation Strike': 'bg-yellow-100 text-yellow-800',
-      'Supplier Delay': 'bg-blue-100 text-blue-800',
-      'Customs Delay': 'bg-pink-100 text-pink-800',
+      'Supplier Shutdown': 'bg-red-100 text-red-800',
+      'Plant Shutdown': 'bg-purple-100 text-purple-800',
+      'Demand Drop': 'bg-blue-100 text-blue-800',
     };
     return colors[type] || 'bg-gray-100 text-gray-800';
   };
@@ -138,7 +136,7 @@ const SimulationList: React.FC = () => {
                 </Link>
               )}
               <Link
-                to="/create-v1"
+                to="/create"
                 className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors flex items-center gap-2"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -229,7 +227,15 @@ const SimulationList: React.FC = () => {
                   </td>
                   <td className="px-6 py-4">
                     <Link
-                      to={`/simulation/${simulation.id}`}
+                      to={
+                        simulation.disruptionType === 'Port Congestion'
+                          ? `/port-congestion/${simulation.id}`
+                          : simulation.disruptionType === 'Supplier Shutdown'
+                          ? `/supplier-shutdown/${simulation.id}`
+                          : simulation.disruptionType === 'Plant Shutdown'
+                          ? `/plant-shutdown/${simulation.id}`
+                          : `/demand-drop/${simulation.id}`
+                      }
                       className="text-sm font-medium text-orange-600 hover:text-orange-800 hover:underline"
                     >
                       {simulation.name}
@@ -257,7 +263,15 @@ const SimulationList: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-center">
                     <Link
-                      to={`/simulation/${simulation.id}`}
+                      to={
+                        simulation.disruptionType === 'Port Congestion'
+                          ? `/port-congestion/${simulation.id}`
+                          : simulation.disruptionType === 'Supplier Shutdown'
+                          ? `/supplier-shutdown/${simulation.id}`
+                          : simulation.disruptionType === 'Plant Shutdown'
+                          ? `/plant-shutdown/${simulation.id}`
+                          : `/demand-drop/${simulation.id}`
+                      }
                       className="text-orange-600 hover:text-orange-800 text-sm font-medium"
                     >
                       View Details
