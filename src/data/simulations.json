@@ -123,5 +123,37 @@
       {"id": "ce-024", "timestamp": "2025-11-15T16:00:00Z", "eventType": "Financial Impact", "description": "Revenue loss of -$110.76M over 4 months. Working capital tied up: $42.67M in excess inventory", "severity": "Critical", "affectedEntities": ["P&L Statement", "Cash Flow", "Working Capital"]}
     ],
     "impactedOrders": []
+  },
+  {
+    "id": "sim-005",
+    "name": "Q1 Perfect Storm - CNY + Viral Launch + Port Crisis",
+    "disruptionType": "Multi-Event Scenario",
+    "disruptionLocation": "Multiple Locations",
+    "createdAt": "2026-01-20T08:00:00Z",
+    "status": "Completed",
+    "duration": "Jan 20 - Feb 28, 2026",
+    "createdBy": "Operations Team",
+    "lastRun": "2026-01-20T08:15:30Z",
+    "variables": [
+      {"name": "Event 1", "value": "Capacity Disruption", "type": "event"},
+      {"name": "Event 2", "value": "Port Congestion", "type": "event"},
+      {"name": "Event 3", "value": "Demand Surge", "type": "event"},
+      {"name": "Event 4", "value": "Supplier Delay", "type": "event"}
+    ],
+    "summary": {
+      "totalOrdersImpacted": 892,
+      "totalRevenue": 67340000,
+      "averageDelay": 30,
+      "criticalOrders": 284
+    },
+    "cascadeEvents": [
+      {"id": "ce-025", "timestamp": "2026-01-20T00:00:00Z", "eventType": "Initial Disruptions", "description": "4 simultaneous events across supply and demand. Supply Side: 4 plants (90% down), 3 ports (+10d delay), 4 suppliers (+14d delay). Demand Side: Premium smartphones (+85% surge)", "severity": "Critical", "affectedEntities": ["4 Plants", "3 Ports", "4 Suppliers", "Premium Smartphones"]},
+      {"id": "ce-026", "timestamp": "2026-01-28T00:00:00Z", "eventType": "Component Supply Crisis", "description": "Port congestion delays shipments, supplier CNY delays compound impact. 18 critical components stuck in transit or delayed at origin, 22 active shipments affected. Compounding: Normal 14-day + 10-day port = 24-day total delay", "severity": "Critical", "affectedEntities": ["18 Components", "22 Shipments"]},
+      {"id": "ce-027", "timestamp": "2026-02-02T00:00:00Z", "eventType": "Production Paralysis", "description": "Plants at 10% capacity, but even skeleton crews can't run without components. 16 production lines completely stopped (planned 10% becomes 0%), 8 SKUs with zero output. Can't produce even the 10% planned because components missing", "severity": "Critical", "affectedEntities": ["16 Production Lines", "8 SKUs"]},
+      {"id": "ce-028", "timestamp": "2026-02-09T00:00:00Z", "eventType": "Inventory Depletion Acceleration", "description": "Normal demand would deplete in 20 days, +85% demand depletes in 8 days, zero replenishment. 12 distribution centers, 18 smartphone SKUs approaching stockout. Depletion rate: 1.85x demand × 0.1x supply = 18.5x normal rate", "severity": "Critical", "affectedEntities": ["12 DCs", "18 Smartphone SKUs"]},
+      {"id": "ce-029", "timestamp": "2026-02-13T00:00:00Z", "eventType": "Panic Buying & Market Distortion", "description": "Customers see shortages, place duplicate orders, retailers hoard inventory. E-commerce channels show inflated demand, retail panic orders, gray market activity. Actual demand +85% becomes apparent demand +140% due to panic", "severity": "High", "affectedEntities": ["All Sales Channels", "Gray Market"]},
+      {"id": "ce-030", "timestamp": "2026-02-16T00:00:00Z", "eventType": "Order Fulfillment Collapse", "description": "892 customer orders unfulfillable, $67M revenue at risk, customer satisfaction crisis. Major retail partners, e-commerce platforms, carrier contracts. Revenue impact 3.2x worse than any single event alone", "severity": "Critical", "affectedEntities": ["Customer Orders", "Retail Partners"]}
+    ],
+    "impactedOrders": []
   }
 ]

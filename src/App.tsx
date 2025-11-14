@@ -9,6 +9,7 @@ import PortCongestionDetail from './components/PortCongestionDetail';
 import SupplierShutdownDetail from './components/SupplierShutdownDetail';
 import PlantShutdownDetail from './components/PlantShutdownDetail';
 import DemandDropDetail from './components/DemandDropDetail';
+import PerfectStormDetail from './components/PerfectStormDetail';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/supplier-shutdown/:id" element={<SupplierShutdownDetail />} />
               <Route path="/plant-shutdown/:id" element={<PlantShutdownDetail />} />
               <Route path="/demand-drop/:id" element={<DemandDropDetail />} />
+              <Route path="/perfect-storm/:id" element={<PerfectStormDetail />} />
               <Route path="/create" element={<CreateSimulation />} />
               <Route path="/compare" element={<ComparisonView />} />
             </Routes>

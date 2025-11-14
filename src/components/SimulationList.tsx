@@ -76,6 +76,7 @@ const SimulationList: React.FC = () => {
       'Supplier Shutdown': 'bg-red-50 text-red-700 border border-red-200',
       'Plant Shutdown': 'bg-purple-50 text-purple-700 border border-purple-200',
       'Demand Drop': 'bg-blue-50 text-blue-700 border border-blue-200',
+      'Multi-Event Scenario': 'bg-red-50 text-red-700 border border-red-200',
     };
     return colors[type] || 'bg-gray-50 text-gray-700 border border-gray-200';
   };
@@ -140,6 +141,7 @@ const SimulationList: React.FC = () => {
       'Supplier Shutdown': `/supplier-shutdown/${simulation.id}`,
       'Plant Shutdown': `/plant-shutdown/${simulation.id}`,
       'Demand Drop': `/demand-drop/${simulation.id}`,
+      'Multi-Event Scenario': `/perfect-storm/${simulation.id}`,
     };
     return routes[simulation.disruptionType] || `/simulation/${simulation.id}`;
   };
