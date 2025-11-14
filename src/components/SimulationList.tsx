@@ -76,6 +76,8 @@ const SimulationList: React.FC = () => {
         return 'bg-green-50 text-green-700 border border-green-200';
       case 'Running':
         return 'bg-blue-50 text-blue-700 border border-blue-200';
+      case 'In-progress':
+        return 'bg-yellow-50 text-yellow-700 border border-yellow-200';
       case 'Draft':
         return 'bg-gray-50 text-gray-600 border border-gray-200';
       case 'Archived':
@@ -260,12 +262,18 @@ const SimulationList: React.FC = () => {
                       />
                     </td>
                     <td className="px-4 py-3">
-                      <Link
-                        to={getDetailRoute(simulation)}
-                        className="text-sm font-medium text-gray-900 hover:text-orange-600 hover:underline"
-                      >
-                        {simulation.name}
-                      </Link>
+                      {simulation.status === 'In-progress' ? (
+                        <span className="text-sm font-medium text-gray-500 cursor-not-allowed">
+                          {simulation.name}
+                        </span>
+                      ) : (
+                        <Link
+                          to={getDetailRoute(simulation)}
+                          className="text-sm font-medium text-gray-900 hover:text-orange-600 hover:underline"
+                        >
+                          {simulation.name}
+                        </Link>
+                      )}
                     </td>
                     <td className="px-4 py-3 whitespace-nowrap">
                       <span className={`inline-flex px-2 py-1 text-xs font-medium rounded ${getDisruptionColor(simulation.disruptionType)}`}>

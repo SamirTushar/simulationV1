@@ -172,12 +172,19 @@ const CreateSimulationV2: React.FC = () => {
         break;
     }
 
+    // Format date range for duration
+    const formatDuration = () => {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      return `${start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${end.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+    };
+
     const newSimulation: Simulation = {
       id: `sim-${Date.now()}`,
       name: simulationName,
       disruptionType: scenarioType as any,
       createdAt: new Date().toISOString(),
-      status: 'Running',
+      status: 'In-progress',
       variables,
       summary: {
         totalOrdersImpacted: 0,
@@ -188,35 +195,14 @@ const CreateSimulationV2: React.FC = () => {
       cascadeEvents: [],
       impactedOrders: [],
       disruptionLocation: variables.find(v => v.type === 'location' || v.type === 'supplier' || v.type === 'plant')?.value || 'Various Locations',
+      duration: formatDuration(),
+      createdBy: 'Current User',
+      lastRun: new Date().toISOString(),
     };
 
-    // Simulate the running status for 3 seconds
-    setTimeout(() => {
-      const mockOrders = generateMockOrders(scenarioType);
-      const mockEvents = generateMockEvents(scenarioType, variables);
-
-      const completedSimulation: Simulation = {
-        ...newSimulation,
-        status: 'Completed',
-        summary: {
-          totalOrdersImpacted: mockOrders.length,
-          totalRevenue: mockOrders.reduce((sum, order) => sum + order.orderValue, 0),
-          averageDelay: Math.round(
-            mockOrders.reduce((sum, order) => sum + order.delayDays, 0) / mockOrders.length
-          ),
-          criticalOrders: mockOrders.filter(order => order.status === 'Critical').length,
-        },
-        cascadeEvents: mockEvents,
-        impactedOrders: mockOrders,
-      };
-
-      addSimulation(completedSimulation);
-      setIsCreating(false);
-      navigate(`/simulation/${completedSimulation.id}`);
-    }, 3000);
-
-    // Add the running simulation immediately
+    // Add the in-progress simulation and navigate back to list
     addSimulation(newSimulation);
+    setIsCreating(false);
     navigate('/');
   };
 
