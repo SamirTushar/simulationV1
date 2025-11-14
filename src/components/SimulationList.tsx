@@ -10,7 +10,6 @@ const SimulationList: React.FC = () => {
   const { simulations, selectedForComparison, toggleComparison } = useSimulations();
   const [sortField, setSortField] = useState<SortField>('createdAt');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
-  const [selectedRows, setSelectedRows] = useState<string[]>([]);
 
   const handleSort = (field: SortField) => {
     if (sortField === field) {
@@ -53,22 +52,6 @@ const SimulationList: React.FC = () => {
     if (aValue > bValue) return sortDirection === 'asc' ? 1 : -1;
     return 0;
   });
-
-  const handleSelectAll = (checked: boolean) => {
-    if (checked) {
-      setSelectedRows(simulations.map(sim => sim.id));
-    } else {
-      setSelectedRows([]);
-    }
-  };
-
-  const handleSelectRow = (id: string, checked: boolean) => {
-    if (checked) {
-      setSelectedRows([...selectedRows, id]);
-    } else {
-      setSelectedRows(selectedRows.filter(rowId => rowId !== id));
-    }
-  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -162,7 +145,7 @@ const SimulationList: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white ml-[47px]">
       <div className="px-6 py-6">
         {/* Header with New Scenario Button */}
         <div className="mb-6 flex justify-end">
@@ -183,14 +166,6 @@ const SimulationList: React.FC = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="w-12 px-4 py-3 text-left">
-                    <input
-                      type="checkbox"
-                      checked={selectedRows.length === simulations.length && simulations.length > 0}
-                      onChange={(e) => handleSelectAll(e.target.checked)}
-                      className="rounded border-gray-300 text-orange-600 focus:ring-orange-500"
-                    />
-                  </th>
                   <th
                     className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                     onClick={() => handleSort('name')}
@@ -253,14 +228,6 @@ const SimulationList: React.FC = () => {
                     key={simulation.id}
                     className="hover:bg-gray-50 transition-colors group"
                   >
-                    <td className="px-4 py-3 whitespace-nowrap">
-                      <input
-                        type="checkbox"
-                        checked={selectedRows.includes(simulation.id)}
-                        onChange={(e) => handleSelectRow(simulation.id, e.target.checked)}
-                        className="rounded border-gray-300 text-orange-600 focus:ring-orange-500"
-                      />
-                    </td>
                     <td className="px-4 py-3">
                       {simulation.status === 'In-progress' ? (
                         <span className="text-sm font-medium text-gray-500 cursor-not-allowed">

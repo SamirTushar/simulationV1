@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    width: 67px;
+    width: 47px;
     height: 100%;
     left: 0px;
     top: 0px;
@@ -46,13 +46,13 @@
 }
 
 .main-logo {
-    min-width: 50px;
-    min-height: 50px;
+    min-width: 35px;
+    min-height: 35px;
     border: 0;
-    margin: 10px 8px;
+    margin: 7px 6px;
     cursor: pointer;
     background-color: transparent;
-    border-radius: 10px;
+    border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,7 +60,7 @@
 }
 
 .main-logo img {
-    width: 50px;
+    width: 35px;
     height: auto;
 }
 
@@ -93,8 +93,8 @@
     margin-right: 2px;
 }
 .sidenav-logo > img {
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     filter: brightness(0) invert(1);
 }
 .active-nav {
@@ -112,7 +112,7 @@
     z-index: 1002;
     text-align: center;
     top: 90px;
-    left: 67px;
+    left: 47px;
 }
 .hover-dt {
     position: absolute;
@@ -122,7 +122,7 @@
     z-index: 1002;
     text-align: center;
     top: 285px;
-    left: 67px;
+    left: 47px;
 }
 .hover-swe {
     position: absolute;
@@ -132,7 +132,7 @@
     z-index: 1002;
     text-align: center;
     top: 330px;
-    left: 67px;
+    left: 47px;
 }
 .hover-riskai {
     position: absolute;
@@ -142,7 +142,7 @@
     z-index: 1002;
     text-align: center;
     top: 135px;
-    left: 67px;
+    left: 47px;
 }
 .hover-report-content {
     padding: 7px 9px 7px 9px;
@@ -176,8 +176,8 @@
     border: 0;
     outline: 0;
     background: none;
-    padding: 5px;
-    margin-top: 15px;
+    padding: 3px;
+    margin-top: 10px;
     position: relative;
     z-index: 1003;
     color: #FFFFFF;
@@ -186,15 +186,15 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 500;
 }
 .hover-swe-content-active {
     border: 0;
     outline: 0;
     background: none;
-    padding: 5px;
-    margin-top: 15px;
+    padding: 3px;
+    margin-top: 10px;
     position: relative;
     z-index: 1003;
     color: #fd835c;
@@ -203,7 +203,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 500;
 }
 .hover-report-lefttriangle,.hover-riskai-lefttriangle {
@@ -229,8 +229,8 @@
 }
 
 .res-logo > img {
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     filter: brightness(0) invert(1);
 }
 .hover-res {
@@ -241,7 +241,7 @@
     z-index: 1002;
     text-align: center;
     top: 140px;
-    left: 67px;
+    left: 47px;
 }
 .hover-resilience {
     position: absolute;
@@ -251,7 +251,7 @@
     z-index: 1002;
     text-align: center;
     top: 182px;
-    left: 67px;
+    left: 47px;
 }
 .hover-resilience-content {
     padding: 7px 9px 7px 9px;
@@ -277,8 +277,8 @@
 }
 
 .gauri-logo > img {
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     filter: brightness(0) invert(1);
 }
 .hover-gauri {
@@ -289,7 +289,7 @@
     z-index: 1002;
     text-align: center;
     top: 235px;
-    left: 67px;
+    left: 47px;
 }
 .hover-gauri-content {
     padding: 7px 9px 7px 9px;
