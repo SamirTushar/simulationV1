@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 
 const DemandDropDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [selectedNode, setSelectedNode] = useState<number>(6);
+  const [selectedNode, setSelectedNode] = useState<number>(5);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [sideDrawerContent, setSideDrawerContent] = useState<{ title: string; content: string } | null>(null);
 
@@ -61,19 +61,11 @@ const DemandDropDetail: React.FC = () => {
     },
     {
       id: 5,
-      title: 'Supplier Contract Exposure',
-      description: 'Component commitments exceed new demand, penalties triggered',
-      severity: 'Critical' as const,
-      affectedEntities: ['Intel Corp', 'Samsung Display', 'Micron', 'Western Digital', 'Broadcom', '9 more suppliers'],
-      timeframe: 'Days 15-30',
-    },
-    {
-      id: 6,
       title: 'Financial Impact',
       description: 'Inventory write-downs, carrying costs, expedited clearance sales',
       severity: 'Critical' as const,
       affectedEntities: ['Working capital', 'Gross margins', 'Operating cash flow', 'P&L impact'],
-      timeframe: 'Days 20-60',
+      timeframe: 'Days 15-40',
     },
   ], []);
 
@@ -115,19 +107,6 @@ const DemandDropDetail: React.FC = () => {
     { plant: 'Plant-Vietnam-03', lineId: 'Line C6', productSku: 'LAPTOP-ACER-SWIFT-3', productName: 'Acer Swift 3 SF314', capacity: 740, plannedProduction: 740, actualProduction: 259, utilization: '35%', idleCapacity: -481, fixedCost: 59200, variableCost: 103600, unitCostIncrease: '+85%', actionRequired: 'Convert to new gen' },
     { plant: 'Plant-Malaysia-01', lineId: 'Line F5', productSku: 'LAPTOP-MSI-PRESTIGE-14', productName: 'MSI Prestige 14 Evo', capacity: 473, plannedProduction: 473, actualProduction: 166, utilization: '35%', idleCapacity: -307, fixedCost: 37840, variableCost: 133440, unitCostIncrease: '+85%', actionRequired: 'Retool or idle' },
     { plant: 'Plant-India-04', lineId: 'Line D5', productSku: 'LAPTOP-LG-GRAM-17', productName: 'LG Gram 17" i7', capacity: 407, plannedProduction: 407, actualProduction: 142, utilization: '35%', idleCapacity: -265, fixedCost: 32560, variableCost: 121080, unitCostIncrease: '+85%', actionRequired: 'Idle pending' },
-  ], []);
-
-  const supplierContractData = useMemo(() => [
-    { supplier: 'Intel Corp', component: 'Core i7-1255U CPU', contractType: 'Take-or-pay', committedQty: 28000, requiredQty: 9800, excessCommitment: -18200, contractValue: 3640000, penaltyRate: '25%', penaltyExposure: 910000, renegotiationStatus: 'In progress', alternateUse: 'New gen transition' },
-    { supplier: 'Intel Corp', component: 'Core i5-1235U CPU', contractType: 'Take-or-pay', committedQty: 32000, requiredQty: 11200, excessCommitment: -20800, contractValue: 3328000, penaltyRate: '25%', penaltyExposure: 832000, renegotiationStatus: 'In progress', alternateUse: 'New gen transition' },
-    { supplier: 'Samsung Display', component: '14" FHD Panel', contractType: 'Fixed commitment', committedQty: 24500, requiredQty: 8575, excessCommitment: -15925, contractValue: 2388750, penaltyRate: '15%', penaltyExposure: 358313, renegotiationStatus: 'Stalled', alternateUse: 'Limited options' },
-    { supplier: 'BOE Display', component: '15.6" FHD Panel', contractType: 'Fixed commitment', committedQty: 31200, requiredQty: 10920, excessCommitment: -20280, contractValue: 2184000, penaltyRate: '15%', penaltyExposure: 327600, renegotiationStatus: 'Agreed to modify', alternateUse: 'None' },
-    { supplier: 'Micron', component: 'DDR4 16GB Module', contractType: 'Take-or-pay', committedQty: 35000, requiredQty: 12250, excessCommitment: -22750, contractValue: 1592500, penaltyRate: '20%', penaltyExposure: 318500, renegotiationStatus: 'In progress', alternateUse: 'Resell possible' },
-    { supplier: 'Samsung Memory', component: 'DDR4 8GB Module', contractType: 'Take-or-pay', committedQty: 42000, requiredQty: 14700, excessCommitment: -27300, contractValue: 1365000, penaltyRate: '20%', penaltyExposure: 273000, renegotiationStatus: 'Agreed to modify', alternateUse: 'New gen compatible' },
-    { supplier: 'Western Digital', component: '512GB SSD', contractType: 'Volume commitment', committedQty: 38500, requiredQty: 13475, excessCommitment: -25025, contractValue: 1926250, penaltyRate: '10%', penaltyExposure: 192625, renegotiationStatus: 'Closed - modified', alternateUse: 'New gen compatible' },
-    { supplier: 'SK Hynix', component: '256GB SSD', contractType: 'Volume commitment', committedQty: 29000, requiredQty: 10150, excessCommitment: -18850, contractValue: 1044000, penaltyRate: '10%', penaltyExposure: 104400, renegotiationStatus: 'In progress', alternateUse: 'Limited use' },
-    { supplier: 'Chicony', component: 'HD Webcam Module', contractType: 'Fixed commitment', committedQty: 33600, requiredQty: 11760, excessCommitment: -21840, contractValue: 504000, penaltyRate: '12%', penaltyExposure: 60480, renegotiationStatus: 'Agreed to modify', alternateUse: 'New gen compatible' },
-    { supplier: 'Sunon', component: 'Cooling Fan Assembly', contractType: 'Fixed commitment', committedQty: 35400, requiredQty: 12390, excessCommitment: -23010, contractValue: 354000, penaltyRate: '12%', penaltyExposure: 42480, renegotiationStatus: 'Closed - modified', alternateUse: 'Cross-model use' },
   ], []);
 
   const financialImpactData = useMemo(() => [
@@ -421,64 +400,6 @@ const DemandDropDetail: React.FC = () => {
         );
 
       case 5:
-        return (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200">
-              <h3 className="text-lg font-bold text-gray-900">Supplier Contract Exposure - Component Commitment Status</h3>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Supplier</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Component</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contract Type</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Committed Qty</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Required Qty</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Excess</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Contract Value</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Penalty Exposure</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Renegotiation</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Alternate Use</th>
-                    <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-12"></th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {supplierContractData.map((item, idx) => (
-                    <tr key={idx} className="hover:bg-gray-50">
-                      <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">{item.supplier}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{item.component}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-600">{item.contractType}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-right text-gray-900">{formatNumber(item.committedQty)}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-right text-gray-900">{formatNumber(item.requiredQty)}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-right text-red-600 font-medium">{formatNumber(item.excessCommitment)}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(item.contractValue)}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-right font-semibold text-red-600">{formatCurrency(item.penaltyExposure)}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm">
-                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded ${
-                          item.renegotiationStatus.includes('Closed') || item.renegotiationStatus.includes('Agreed') ? 'bg-green-100 text-green-800' :
-                          item.renegotiationStatus.includes('Stalled') ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'
-                        }`}>
-                          {item.renegotiationStatus}
-                        </span>
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-600">{item.alternateUse}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-center">
-                        <ExplainButton onClick={() => openExplainDrawer(
-                          `${item.supplier} - Contract Exposure`,
-                          `Contract with ${item.supplier} for ${item.component} (${item.contractType}): committed to ${formatNumber(item.committedQty)} units but only need ${formatNumber(item.requiredQty)} units based on new demand, creating excess of ${formatNumber(Math.abs(item.excessCommitment))} units. Contract value: ${formatCurrency(item.contractValue)}. Penalty exposure (${item.penaltyRate}): ${formatCurrency(item.penaltyExposure)}. Renegotiation status: ${item.renegotiationStatus}. Alternate use: ${item.alternateUse}.`
-                        )} />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <Pagination totalItems={14} />
-          </div>
-        );
-
-      case 6:
         return (
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
