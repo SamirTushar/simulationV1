@@ -126,7 +126,7 @@
   },
   {
     "id": "sim-005",
-    "name": "Q1 Perfect Storm - CNY + Viral Launch + Port Crisis",
+    "name": "Q1 Multi-Event - CNY + Viral Launch + Port Crisis",
     "disruptionType": "Multi-Event Scenario",
     "disruptionLocation": "Multiple Locations",
     "createdAt": "2026-01-20T08:00:00Z",
